@@ -1,0 +1,48 @@
+# Installer Docker sur Ubuntu
+sudo apt-get install docker.io
+
+# Démarrer le service Docker
+sudo systemctl start docker
+
+# Activer Docker pour qu'il démarre automatiquement au démarrage du système
+sudo systemctl enable docker
+
+# Créer un groupe "docker" pour permettre à l'utilisateur actuel de lancer les commandes Docker sans "sudo"
+sudo groupadd docker
+
+# Ajouter l'utilisateur actuel au groupe "docker"
+sudo usermod -aG docker <user-machine>
+
+# Vérifier si Docker est correctement installé et afficher des informations sur les commandes Docker
+docker
+
+# Télécharger une image Docker depuis Docker Hub (exemple avec l'image "hello-world")
+docker pull hello-world
+
+# Exécuter une image Docker pour créer un conteneur (exemple avec l'image "hello-world")
+docker run hello-world
+
+# Afficher la liste des conteneurs en cours d'exécution
+docker ps
+
+# Afficher la liste de tous les conteneurs (y compris ceux arrêtés)
+docker ps -a
+
+# Supprimer un conteneur spécifique
+docker rm <id-conteneur>
+
+# Exécuter une image Docker en arrière-plan (détachée) avec un port mappé (exemple avec l'image "nginx" sur le port 8082)
+docker run -tdi -p 8082:80 nginx
+
+# Exécuter une commande à l'intérieur du conteneur (exemple avec l'image "nginx" pour entrer en mode interactif avec le shell)
+docker exec -it <id-conteneur> /bin/bash
+
+# Exécuter une autre instance du conteneur avec un volume monté (exemple avec l'image "nginx" et le volume "/chemin/local:/chemin/conteneur")
+docker run -tdi -p 8083:80 -v /chemin/local:/chemin/conteneur --name my-nginx-container nginx
+#exemple : docker run -tdi -p 8083:80 -v /home/ebahri/Desktop/Docker/nginx/:/usr/share/nginx/html/ --name my-nginx-container 021
+
+# Arrêter un conteneur spécifique
+docker stop <id-conteneur>
+
+# Supprimer une image Docker spécifique
+docker rmi -f <id-image>
