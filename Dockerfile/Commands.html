@@ -1,0 +1,50 @@
+## Commands in the Dockerfile:
+
+### COPY:
+- Copy files from the host system to the Docker host.
+
+### ADD:
+- Similar to COPY but allows additional features, like downloading files from URLs and unpacking compressed archives.
+
+### ENV:
+- Add environment variables to the image.
+
+### RUN (build time):
+- Execute a command during the image build process.
+- (Example: RUN apt update && apt install vim)
+
+### CMD (runtime):
+- Specify the command to run when the container starts.
+
+### EXPOSE:
+- Expose a port to the host system.
+
+### FROM:
+- Download an image from Docker Hub.
+
+### VOLUME:
+- Create a volume in the image.
+
+### WORKDIR:
+- Set the working directory inside the container.
+
+---------------------------------
+#Build the Docker Image:
+docker build -t <image-name> .
+
+#Push the Image to Docker Hub
+
+#1--Login to Dockerhub
+docker login -u <dockerhub-username>
+
+#EX :  docker login -u eyabahri14
+
+#2--Tag the Image 
+docker tag <local-image-id> <dockerhub-username>/<repository-name>:latest
+
+#EX : docker tag 51414eeedd49 eyabahri14/saveursdefatma:latest
+
+#3--Push the Image 
+docker push <dockerhub-username>/<repository-name>:<tag>
+
+#EX : docker push eyabahri14/saveursdefatma:latest
