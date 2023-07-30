@@ -1,33 +1,33 @@
 ## Commands in the Dockerfile:
 
 ### COPY:
-- Copy files from the host system to the Docker host.
+-  copie des fichiers depuis le host système vers le host docker 
 
 ### ADD:
-- Similar to COPY but allows additional features, like downloading files from URLs and unpacking compressed archives.
+-copie des fichiers/dossiers depuis le host système vers le host docker 
 
 ### ENV:
-- Add environment variables to the image.
+- ajouter une variable d’environnement
 
-### RUN (build time):
-- Execute a command during the image build process.
-- (Example: RUN apt update && apt install vim)
+### RUN (BUILD TIME):
+- permet de spécifier une commande à exécuter pendant le build de l’image
+- (Exemple: RUN apt update && apt install vim)
 
-### CMD (runtime):
-- Specify the command to run when the container starts.
+### CMD (RUNTIME) : à ne pas confondre avec RUN, cette instruction permet d’exécuter une instruction au moment de lancement des conteneurs
 
 ### EXPOSE:
-- Expose a port to the host system.
+-Exposé un port TCP au host systéme
 
 ### FROM:
-- Download an image from Docker Hub.
+- Télecharger une image depuis Dockerhub
 
 ### VOLUME:
-- Create a volume in the image.
+-Créer un volume depuis un Dockerfile  (mais je préfére les faire à travers : 
+-Terminal 
+-Docker Compose)
 
 ### WORKDIR:
-- Set the working directory inside the container.
-
+-Créer un dossier de travail
 ---------------------------------
 #Build the Docker Image:
 docker build -t <image-name> .
@@ -48,3 +48,4 @@ docker tag <local-image-id> <dockerhub-username>/<repository-name>:latest
 docker push <dockerhub-username>/<repository-name>:<tag>
 
 #EX : docker push eyabahri14/saveursdefatma:latest
+​
